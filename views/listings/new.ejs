@@ -27,10 +27,26 @@
           </div>
         </div>
 
-        <div class="mb-3 col">
-          <label for="image" class="form-label">Upload Image</label>
-          <input name="listing[image]" class="form-control" type="file" />
+
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="image" class="form-label">Upload Image</label>
+            <input name="listing[image]" class="form-control" type="file" />
+          </div>
+          <div class="mb-3 col-md-8">
+            <label for="category" class="form-label">Categories:</label>
+            <select class="form-select" id="category" name="listing[category]">
+              <option value="Rooms" selected>Rooms</option>
+              <option value="Iconic Cities">Iconic Cities</option>
+              <option value="Mountains">Mountains</option>
+              <option value="Amazing Pools">Amazing Pools</option>
+              <option value="Camping">Camping</option>
+              <option value="Farms">Farms</option>
+              <option value="Arctics">Arctics</option>
+            </select>
+          </div>
         </div>
+
 
         <div class="row">
           <div class="mb-3 col-md-4">

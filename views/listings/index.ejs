@@ -22,11 +22,11 @@
       opacity: 1;
     }
 
-    .tax-infos{
+    .tax-infos {
       display: none;
     }
 
-    .taxToggler{
+    .taxToggler {
       border: 1px solid black;
       border-radius: 1rem;
       display: flex;
@@ -40,41 +40,50 @@
   <body>
     <!-- <h3>All Listings</h3> -->
     <div id="filters">
+
       <div class="filter">
-        <div><i class="fa-solid fa-fire"></i></div>
-        <p>Trending</p>
+        <a href="/listings?category=Rooms">
+          <div><i class="fa-solid fa-bed"></i></div>
+          <p>Rooms</p>
+        </a>
       </div>
       <div class="filter">
-        <div><i class="fa-solid fa-bed"></i></div>
-        <p>Rooms</p>
+        <a href="/listings?category=Iconic Cities">
+          <div><i class="fa-solid fa-city"></i></div>
+          <p>Iconic Cities</p>
+        </a>
       </div>
       <div class="filter">
-        <div><i class="fa-solid fa-city"></i></div>
-        <p>Iconic Cities</p>
+        <a href="/listings?category=Mountains">
+          <div><i class="fa-solid fa-mountain"></i></div>
+          <p>Mountains</p>
+        </a>
+
+      </div>
+
+      <div class="filter">
+        <a href="/listings?category=Amazing Pools">
+          <div><i class="fa-solid fa-person-swimming"></i></div>
+          <p>Amazing Pools</p>
+        </a>
       </div>
       <div class="filter">
-        <div><i class="fa-solid fa-mountain"></i></div>
-        <p>Mountains</p>
+        <a href="/listings?category=Camping">
+          <div><i class="fa-solid fa-campground"></i></div>
+          <p>Camping</p>
+        </a>
       </div>
       <div class="filter">
-        <div><i class="fa-brands fa-fort-awesome"></i></div>
-        <p>Castles</p>
+        <a href="/listings?category=Farms">
+          <div><i class="fa-solid fa-tractor"></i></div>
+          <p>Farms</p>
+        </a>
       </div>
       <div class="filter">
-        <div><i class="fa-solid fa-person-swimming"></i></div>
-        <p>Amazing Pools</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-campground"></i></div>
-        <p>Camping</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-tractor"></i></div>
-        <p>Farms</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-snowflake"></i></div>
-        <p>Arctic</p>
+        <a href="/listings?category=Arctic">
+          <div><i class="fa-solid fa-snowflake"></i></div>
+          <p>Arctic</p>
+        </a>
       </div>
       <div class="taxToggler">
         <div class="form-check-reverse form-switch">
@@ -95,7 +104,7 @@
                   <%= listing.title %>
                 </b><br>
                 &#8377;<%=listing.price && listing.price.toLocaleString("en-IN") %> / night
-                &nbsp;&nbsp; <i class="tax-infos">+18% GST</i>
+                  &nbsp;&nbsp; <i class="tax-infos">+18% GST</i>
               </p>
             </div>
           </div>
@@ -105,13 +114,13 @@
 
     <script>
       const taxToggler = document.getElementById("switchCheckDefault")
-      
+
       taxToggler.addEventListener("click", () => {
         const taxInfos = document.getElementsByClassName("tax-infos");
-        for(let info of taxInfos){
-          if(info.style.display != "inline"){
+        for (let info of taxInfos) {
+          if (info.style.display != "inline") {
             info.style.display = "inline";
-          }else{
+          } else {
             info.style.display = "none"
           }
         }

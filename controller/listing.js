@@ -4,7 +4,18 @@ const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res, next) => {
-  const allListings = await Listing.find({});
+  const { category, destination } = req.query;
+  console.log(category);
+  let allListings = null;
+  console.log(destination);
+  if (category) {
+    allListings = await Listing.find({ category: category });
+  }else if(destination){
+    allListings = await Listing.find({ location: new RegExp(destination, "i") });
+  }
+   else {
+    allListings = await Listing.find({});
+  }
   res.render("listings/index", { allListings });
 };
 
@@ -46,7 +57,7 @@ module.exports.newListing = async (req, res, next) => {
   newListing.image = { url, filename };
 
   newListing.geometry = response.body.features[0].geometry;
-
+  
   const savedListing = await newListing.save();
   console.log(savedListing);
   req.flash("success", "New Listing Created!!");
@@ -78,6 +89,7 @@ module.exports.showListing = async (req, res, next) => {
   const listing = await Listing.findById(id)
     .populate({ path: "reviews", populate: { path: "author" } })
     .populate("owner");
+  console.log(listing);
   if (!listing) {
     req.flash("error", "The Listing you are looking for doesn't exist!");
     return res.redirect("/listings");

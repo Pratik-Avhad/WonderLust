@@ -1,6 +1,8 @@
 <% layout('/layouts/boilerplate') -%>
     <script>
+        
         const mapToken = "<%=process.env.MAP_TOKEN %>";
+        console.log(mapToken)
         window.listingData = <%- JSON.stringify(listing) %>;
     </script>
 
@@ -11,9 +13,12 @@
                         <%= listing.title %>
                     </b></h2>
             </div>
+            <img src="<%=listing.image.url%>" alt="listing_image"
+                    style="width: 400px; align-self: center;" />
             <div class="col-8">
+                
                 <div class="card listing-card">
-                    <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image" />
+
                     <div class="card-body">
                         <p class="card-text">
                             Owned by:<i>
@@ -101,7 +106,7 @@
                                                     </p>
 
 
-                                                    <% if(review.author.equals(currUser._id)){ %>
+                                                    <% if(currUser && review.author.equals(currUser._id)){ %>
                                                         <form method="post"
                                                             action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE">
                                                             <button class="btn btn-dark btn-sm mb-3">Delete</button>
