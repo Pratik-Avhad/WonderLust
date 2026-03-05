@@ -9,8 +9,7 @@ const listingSchema = Joi.object({
     country: Joi.string().required(),
     price: Joi.number().min(0).required(),
     category: Joi.string()
-      .valid("Rooms", "Iconic Cities", "Mountains", "Amazing Pools", "Camping", "Farms", "Arctic")
-      .required(),
+      .valid("Rooms", "Iconic Cities", "Mountains", "Amazing Pools", "Camping", "Farms", "Arctic"),
   }).required(),
 }).required();
 
